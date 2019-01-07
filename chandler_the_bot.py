@@ -3,13 +3,13 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 import json
 import time
-import config as cfg
+from config import *
 
-# consumer key, consumer secret, access token, access secret.
+'''# consumer key, consumer secret, access token, access secret.
 ckey = cfg.ckey
 csecret = cfg.csecret
 atoken = cfg.atoken
-asecret = cfg.asecret
+asecret = cfg.asecret'''
 
 tweet_dict = {}
 
@@ -57,4 +57,4 @@ auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
 
 twitterStream = Stream(auth, listener())
-twitterStream.filter(track=["machine learning"])
+twitterStream.filter(track=["chandler"])
