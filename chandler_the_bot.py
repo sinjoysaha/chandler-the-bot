@@ -1,6 +1,7 @@
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
+from tweepy import API
 import json
 import time
 from config import *
@@ -41,6 +42,10 @@ def processTweet(tweet_data):
     print()
     time.sleep(2)
 
+def postTweet(tweet_this):
+    api.update_status(tweet_this)
+    print("TWEETED:", tweet_this)
+
 
 class listener(StreamListener):
 
@@ -55,6 +60,10 @@ class listener(StreamListener):
 
 auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
+api = API(auth)
+
+tweet_this = 'Test Tweet 4'
+postTweet(tweet_this)
 
 twitterStream = Stream(auth, listener())
 twitterStream.filter(track=["chandler"])
